@@ -1,12 +1,9 @@
 package org.example.article;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class ArticleService {
-
-
-
     ArticleRepository articleRepository = new ArticleRepository();
     public long create( String title, String content) {
         return this.articleRepository.create(title, content);

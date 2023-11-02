@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    Scanner sc = new Scanner(System.in);
 
-    ArticleController articleController = new ArticleController(sc);
+
+    ArticleController articleController = new ArticleController();
     public void run () {
         System.out.println("== 시스템 시작 ==");
 
         while(true) {
             System.out.print("명령어 ) ");
-            String command = sc.nextLine();
+            String command = Container.getScanner().nextLine();
             switch (command) {
                 case "종료" :
                     System.out.println("== 시스템 종료 ==");

@@ -1,25 +1,25 @@
 package org.example.article;
 
+import org.example.Container;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ArticleController {
-    Scanner sc;
+
 
     ArticleService articleService = new ArticleService();
 
-    public ArticleController(Scanner sc) {
-        this.sc = sc;
-    }
+
 
     public void create() {
 
         System.out.print("제목 ) ");
-        String title = sc.nextLine();
+        String title = Container.getScanner().nextLine();
 
         System.out.print("내용 ) ");
-        String content = sc.nextLine();
+        String content = Container.getScanner().nextLine();
        long id = this.articleService.create(title, content);
 
         System.out.println(id + "번 게시물이 등록 되었습니다.");
@@ -37,8 +37,8 @@ public class ArticleController {
     public void remove() {
 
         System.out.print("삭제할 번호 ) ");
-        long id = sc.nextLong();
-        sc.nextLine();
+        long id = Container.getScanner().nextLong();
+        Container.getScanner().nextLine();
 
         Article article = this.articleService.articleListFindById(id);
         this.articleService.remove(article);
@@ -49,20 +49,20 @@ public class ArticleController {
     public void modify() {
 
         System.out.print("수정할 번호 )");
-        long id = sc.nextLong();
-        sc.nextLine();
+        long id = Container.getScanner().nextLong();
+        Container.getScanner().nextLine();
 
         Article article = this.articleService.articleListFindById(id);
 
         if(article.getId() == id) {
             System.out.println("기존 제목 :" + article.getTitle());
             System.out.print("수정 ) ");
-            String title = sc.nextLine();
+            String title = Container.getScanner().nextLine();
 
 
             System.out.println("기존 내용 :" + article.getContent());
             System.out.print("수정 ) ");
-            String content = sc.nextLine();
+            String content = Container.getScanner().nextLine();
 
             this.articleService.modify(article, title, content);
             System.out.println(id + "번 게시글이 수정 되었습니다.");
