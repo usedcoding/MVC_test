@@ -2,37 +2,33 @@ package org.example.article;
 
 import org.example.Article;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleService {
-    List<Article> articleList = new ArrayList<>();
 
-    public  void create(long id, String title, String content) {
-        Article article = new Article(id, title, content);
-        articleList.add(article);
+    ArticleRepository articleRepository = new ArticleRepository();
+
+    public  long  create( String title, String content) {
+        return this.articleRepository.create(title, content);
+
     }
 
     public List<Article> getArticleListAll() {
-        return articleList;
+        return this.articleRepository.getArticleListAll();
     }
 
     public void remove(Article article) {
-       this.articleList.remove(article);
+        this.articleRepository.remove(article);
     }
 
     public void modify(Article article, String title, String content) {
-        article.setTitle(title);
-        article.setContent(content);
+        this.articleRepository.modify(article, title, content);
     }
     public Article articleFindById(long id) {
-        for(int i = 0; i < articleList.size(); i++) {
-            Article article = articleList.get(i);
-            if(article.getId() == id) {
-                return article;
-            }
-        }
-        return null;
+        return articleRepository.articleFindById(id);
     }
+
 
 }

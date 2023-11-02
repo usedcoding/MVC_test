@@ -2,13 +2,12 @@ package org.example.article;
 
 import org.example.Article;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ArticleController {
-
-    long id = 0;
     Scanner sc;
 
     public ArticleController(Scanner sc) {
@@ -18,14 +17,14 @@ public class ArticleController {
     ArticleService articleService = new ArticleService();
 
     public void create() {
-        id++;
+
         System.out.print("제목 ) ");
         String title = sc.nextLine();
 
         System.out.print("내용 ) ");
         String content = sc.nextLine();
 
-        this.articleService.create(id, title, content);
+        long id = this.articleService.create(title, content);
 
         System.out.println(id + "번 게시물이 등록 되었습니다.");
     }
@@ -41,7 +40,7 @@ public class ArticleController {
 
     public void remove() {
         System.out.print("삭제할 번호 ) ");
-        id = sc.nextLong();
+        long id = sc.nextLong();
         sc.nextLine();
 
         Article article = this.articleService.articleFindById(id);
@@ -52,7 +51,7 @@ public class ArticleController {
 
     public void modify() {
         System.out.print("수정할 번호 ) ");
-        id = sc.nextLong();
+        long id = sc.nextLong();
         sc.nextLine();
 
         Article article = this.articleService.articleFindById(id);
