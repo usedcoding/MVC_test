@@ -44,15 +44,10 @@ public class ArticleController {
         id = sc.nextLong();
         sc.nextLine();
 
-        Article article = this.articleService.remove(id);
+        Article article = this.articleService.articleFindById(id);
+        this.articleService.remove(article);
 
-            if (article.getId() == id) {
-                articleList.remove(article);
-            }
-            //articleList의 위치
-
-
-        System.out.println(id + "번 게시물이 삭제 되었습니다.");
+        System.out.println(id+ "번 게시물이 삭제 되었습니다.");
     }
 
     public void modify() {
@@ -60,17 +55,22 @@ public class ArticleController {
         id = sc.nextLong();
         sc.nextLine();
 
-        Article article = this.articleFindById(id);
+        Article article = this.articleService.articleFindById(id);
+
         if (article.getId() == id) {
+
             System.out.println("기존 제목 : " + article.getTitle());
             System.out.println("수정 제목 )");
             String title = sc.nextLine();
-            article.setTitle(title);
+
 
             System.out.println("기존 내용 : " + article.getContent());
             System.out.println("수정 내용 )");
             String content = sc.nextLine();
-            article.setContent(content);
+
+
+            this.articleService.modify(article, title, content);
+
 
             System.out.println(id + "번 게시물이 수정 되었습니다.");
         }

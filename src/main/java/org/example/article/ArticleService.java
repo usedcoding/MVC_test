@@ -17,10 +17,15 @@ public class ArticleService {
         return articleList;
     }
 
-    public Article remove(long id) {
-        return this.articleFindById(id);
+    public void remove(Article article) {
+       this.articleList.remove(article);
     }
-    private Article articleFindById(long id) {
+
+    public void modify(Article article, String title, String content) {
+        article.setTitle(title);
+        article.setContent(content);
+    }
+    public Article articleFindById(long id) {
         for(int i = 0; i < articleList.size(); i++) {
             Article article = articleList.get(i);
             if(article.getId() == id) {
