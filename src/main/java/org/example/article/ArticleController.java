@@ -44,8 +44,7 @@ public class ArticleController {
         id = sc.nextLong();
         sc.nextLine();
 
-
-        Article article = this.articleFindById(id);
+        Article article = this.articleService.remove(id);
 
             if (article.getId() == id) {
                 articleList.remove(article);
@@ -76,15 +75,8 @@ public class ArticleController {
         }
 
     }
-    private Article articleFindById(long id) {
-        for(int i = 0; i < articleList.size(); i++) {
-            Article article = articleList.get(i);
-            if(article.getId() == id) {
-                return article;
-            }
-        }
-        return null;
-    }
+
+
 }
 
 

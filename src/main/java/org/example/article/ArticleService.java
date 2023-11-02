@@ -17,4 +17,17 @@ public class ArticleService {
         return articleList;
     }
 
+    public Article remove(long id) {
+        return this.articleFindById(id);
+    }
+    private Article articleFindById(long id) {
+        for(int i = 0; i < articleList.size(); i++) {
+            Article article = articleList.get(i);
+            if(article.getId() == id) {
+                return article;
+            }
+        }
+        return null;
+    }
+
 }
