@@ -31,8 +31,7 @@ public class ArticleController {
     }
 
     public void list() {
-        this.articleService.getArticleListAll();
-
+         List<Article> articleList = articleService.getArticleListAll();
         System.out.println("번호 / 제목 / 내용 ");
         for (int i = 0; i < articleList.size(); i++) {
             Article article = articleList.get(i);

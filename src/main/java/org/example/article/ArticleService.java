@@ -13,7 +13,8 @@ public class ArticleService {
         articleList.add(article);
     }
 
-    public List<Article> getArticleListAll(Article article) {
+    public List<Article> getArticleListAll() {
         return articleList;
     }
+
 }
