@@ -49,6 +49,7 @@ public class ArticleController {
             if (article.getId() == id) {
                 articleList.remove(article);
             }
+            //articleList의 위치
 
 
         System.out.println(id + "번 게시물이 삭제 되었습니다.");
