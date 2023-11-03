@@ -6,7 +6,7 @@ public class Container {
     private static Scanner sc;
 
     public static void init() {
-        new Scanner(System.in);
+        sc = new Scanner(System.in);
     }
 
     public static void close() {
