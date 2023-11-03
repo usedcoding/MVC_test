@@ -2,15 +2,22 @@ package org.example;
 
 import org.example.article.Article;
 import org.example.article.ArticleController;
+import org.example.db.DBConnection;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class App {
-
-
     ArticleController articleController = new ArticleController();
+    public App() {
+        DBConnection.DB_NAME = "proj1";
+        DBConnection.DB_USER = "root";
+        DBConnection.DB_PASSWORD = "";
+        DBConnection.DB_PORT = 3306;
+
+        Container.getDBconnection().connect();
+    }
     public void run () {
         System.out.println("== 시스템 시작 ==");
 
